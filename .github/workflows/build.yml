@@ -42,6 +42,11 @@ jobs:
 
       - name: Build
         run: CGO_ENABLED=0 GOOS=linux go build -v -o ./bin/main .
+      - name: Upload math result for build job
+        uses: actions/upload-artifact@v1
+        with:
+          name: go
+          path: ./bin/main
 
   # Run tests.
   # See also https://docs.docker.com/docker-hub/builds/automated-testing/
@@ -51,6 +56,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Download math result for build job
+        uses: actions/download-artifact@v1
+        with:
+          name: go
+
       - uses: actions/checkout@v2
 
       - name: Run tests
@@ -78,6 +88,11 @@ jobs:
     if: github.event_name == 'push'
 
     steps:
+      - name: Download math result for build job
+        uses: actions/download-artifact@v1
+        with:
+          name: go
+
       - uses: actions/checkout@v2
 
       - name: Build image
