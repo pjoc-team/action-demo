@@ -15,7 +15,7 @@ on:
 
 env:
   # TODO: Change variable to your image's name.
-  IMAGE_NAME: action-demo
+  IMAGE_NAME: main
 
 jobs:
   # Run tests.
