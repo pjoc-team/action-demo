@@ -15,7 +15,7 @@ on:
 
 env:
   # TODO: Change variable to your image's name.
-  IMAGE_NAME:
+  IMAGE_NAME: image
 
 jobs:
   # Run tests.
@@ -68,7 +68,6 @@ jobs:
       - name: Push image
         run: |
           IMAGE_ID=docker.pkg.github.com/${{ github.repository }}/$IMAGE_NAME
-          [[ -z "$IMAGE_NAME" ]] && IMAGE_ID=docker.pkg.github.com/${{ github.repository }}
 
           # Strip git ref prefix from version
           VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
