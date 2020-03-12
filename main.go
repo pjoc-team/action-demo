@@ -15,7 +15,7 @@ func main() {
 			c.Writer.Write([]byte("hello!\n"))
 			//c.String(http.StatusOK, "", "hello!\n")
 		})
-	err := r.Run(":8081")
+	err := r.Run(":8080")
 
 	//http.HandleFunc("/", func(writer http.ResponseWriter, request *http.Request) {
 	//	_, err := writer.Write([]byte("hello!\n"))
@@ -23,6 +23,6 @@ func main() {
 	//		fmt.Printf("write error: %v \n", err.Error())
 	//	}
 	//})
-	//err := http.ListenAndServe(":8081", nil)
+	//err := http.ListenAndServe(":8080", nil)
 	panic(err)
 }
