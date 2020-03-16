@@ -80,6 +80,7 @@ jobs:
 
       - name: Push image
         run: |
+          env
           IMAGE_ID=docker.pkg.github.com/${{ github.repository }}/$IMAGE_NAME
 
           # Strip git ref prefix from version
