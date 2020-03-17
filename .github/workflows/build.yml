@@ -79,7 +79,7 @@ jobs:
       - name: Push image
         run: |
           env
-          IMAGE_NAME=`basename ${{ github.repository }}`
+          IMAGE_NAME=$(basename ${{ github.repository }})
           IMAGE_ID=docker.pkg.github.com/${{ github.repository }}/$IMAGE_NAME
 
           # Strip git ref prefix from version
