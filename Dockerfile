@@ -18,25 +18,31 @@ RUN export REPOSITORY=`cat /tmp/go.mod | grep -E "^module\s[0-9a-zA-Z\./_\-]+" |
         exit 1; \
     else \
         echo "path===${GOPATH}/src/$REPOSITORY"; \
-    fi \
+    fi; \
+    mkdir -p "${BUILD_PROJECT_PATH}"; \
     cp -R /tmp/* ${BUILD_PROJECT_PATH}; \
-    cd ${BUILD_PROJECT_PATH} && pwd && \
+    cd ${BUILD_PROJECT_PATH}; \
+    pwd; \
     if [ -f "go_build.sh" ]; then \
         bash go_build.sh; \
         mv ./bin/* /app/; \
+        mv /app/${APP} /app/main; \
     else \
         echo "not found go_build.sh. files: `ls`" ;\
     fi
+
+RUN env
+
 
 FROM alpine:latest as certs
 RUN apk --update add ca-certificates && \
     apk add bash && \
     mkdir -p /app
 
-ENV APP=$app
+#ENV APP=$app
 
-COPY --from=build /app/bin/ /app/
+COPY --from=build /app/ /app/
 
 WORKDIR /app
-CMD ["bash", "-c", "/app/${APP}"]
+CMD ["bash", "-c", "/app/main"]
 EXPOSE 8080
