@@ -18,11 +18,9 @@ RUN export REPOSITORY=`cat /tmp/go.mod | grep -E "^module\s[0-9a-zA-Z\./_\-]+" |
         exit 1; \
     else \
         echo "path===${GOPATH}/src/$REPOSITORY"; \
-    fi
-
-RUN cp -R /tmp/* ${GOPATH}/src/${REPOSITORY}
-
-RUN cd ${BUILD_PROJECT_PATH} && \
+    fi \
+    cp -R /tmp/* ${BUILD_PROJECT_PATH}; \
+    cd ${BUILD_PROJECT_PATH} && pwd && \
     if [ -f "go_build.sh" ]; then \
         bash go_build.sh; \
         mv ./bin/* /app/; \
@@ -34,7 +32,7 @@ FROM alpine:latest as certs
 RUN apk --update add ca-certificates && \
     apk add bash && \
     mkdir -p /app
-ARG app
+
 ENV APP=$app
 
 COPY --from=build /app/bin/ /app/
