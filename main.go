@@ -46,7 +46,10 @@ func main() {
 			})
 		}).
 			GET("/", func(c *gin.Context) {
-				c.Writer.Write([]byte("hello!\n"))
+				_, err := c.Writer.Write([]byte("hello!\n"))
+				if err != nil {
+					fmt.Printf("error: %v\n", err.Error())
+				}
 				//c.String(http.StatusOK, "", "hello!\n")
 			})
 		err := server.ListenAndServe()
