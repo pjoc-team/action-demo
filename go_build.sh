@@ -3,7 +3,7 @@
 export GO111MODULE=on
 
 cmd_dir="./"
-
+#set -x
 bin_dir="./bin"
 if [ -n "${BIN}" ]; then
     bin_dir="${BIN}"
