@@ -3,6 +3,7 @@
 [![License](https://img.shields.io/github/license/pjoc-team/go-action-template.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 [![Stars](https://img.shields.io/github/stars/pjoc-team/go-action-template.svg)](https://github.com/pjoc-team/go-action-template/stargazers)
 [![Builder](https://github.com/pjoc-team/go-action-template/workflows/Builder/badge.svg)](https://github.com/pjoc-team/go-action-template/actions)
+[![Release](https://img.shields.io/github/v/tag/pjoc-team/pay-gateway)](https://github.com/pjoc-team/go-action-template/tags)
 [![GoDoc](https://img.shields.io/badge/doc-go.dev-informational.svg)](https://pkg.go.dev/github.com/pjoc-team/go-action-template)
 [![GoMod](https://img.shields.io/github/go-mod/go-version/pjoc-team/go-action-template.svg)](https://golang.org/)
 
